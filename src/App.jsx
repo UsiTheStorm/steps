@@ -19,7 +19,7 @@ function App() {
     setIsOpen(!isOpen);
   }
 
-  function hendleSteps(clickedStep) {
+  function hendleStepСlick(clickedStep) {
     setStep(clickedStep);
   }
 
@@ -31,15 +31,18 @@ function App() {
       {isOpen && (
         <div className="steps">
           <div className="numbers">
-            {messages.map((msg, idx) => (
-              <div
-                key={idx}
-                className={step >= idx + 1 ? 'active' : ''}
-                onClick={() => hendleSteps(idx + 1)}
-              >
-                {idx + 1}
-              </div>
-            ))}
+            {messages.map((msg, idx) => {
+              const activeStep = idx + 1;
+              return (
+                <div
+                  key={idx}
+                  className={step >= activeStep ? 'active' : ''}
+                  onClick={() => hendleStepСlick(activeStep)}
+                >
+                  {activeStep}
+                </div>
+              );
+            })}
           </div>
           <p className="message">
             Step {step}: {messages[step - 1]}
