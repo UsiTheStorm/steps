@@ -6,7 +6,7 @@ const isGitHub = process.env.DEPLOY_TARGET === 'GH';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: isGitHub ? '/YOURREPO/' : '/',
+    base: isGitHub ? '/steps/' : '/',
     build: {
         sourcemap: true,
         emptyOutDir: true,
