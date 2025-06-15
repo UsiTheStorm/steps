@@ -24,10 +24,10 @@ function App() {
         Step {step}: {messages[step - 1]}
       </p>
       <div className="buttons">
-        <button style={{ backgroundColor: '#7950f2', color: '#fff' }} onClick={handlePrevious}>
+        <button style={{ color: '#fff' }} onClick={handlePrevious} disabled={step === 1}>
           Previous
         </button>
-        <button style={{ backgroundColor: '#7950f2', color: '#fff' }} onClick={handleNext}>
+        <button style={{ color: '#fff' }} onClick={handleNext} disabled={step === 3}>
           Next
         </button>
       </div>

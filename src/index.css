@@ -53,6 +53,7 @@ body {
 }
 
 .buttons button {
+  background-color: #7950f2;
   border: none;
   cursor: pointer;
   padding: 10px 15px;
@@ -63,6 +64,11 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.buttons button:disabled {
+  cursor: not-allowed;
+  background-color: #808080fa;
 }
 
 .buttons button span {
