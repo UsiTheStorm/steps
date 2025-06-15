@@ -9,7 +9,7 @@ body {
 
 .steps {
   cursor: pointer;
-  width: 600px;
+  max-width: 600px;
   background-color: #f7f7f7;
   border-radius: 7px;
   padding: 25px 80px;
@@ -18,7 +18,9 @@ body {
 
 .numbers {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  gap: 1em;
+  flex-wrap: wrap;
 }
 
 .numbers > div {
