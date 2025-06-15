@@ -68,7 +68,7 @@ body {
 
 .buttons button:disabled {
   cursor: not-allowed;
-  background-color: #808080fa;
+  background-color: #7950f256;
 }
 
 .buttons button span {
