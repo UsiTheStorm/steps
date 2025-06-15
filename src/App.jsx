@@ -8,11 +8,11 @@ function App() {
   const [isOpen, setIsOpen] = useState(true);
 
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((s) => s - 1);
   }
 
   function handleNext() {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) setStep((s) => s + 1);
   }
 
   function handleClose() {
@@ -27,9 +27,11 @@ function App() {
       {isOpen && (
         <div className="steps">
           <div className="numbers">
-            <div className={step >= 1 ? 'active' : ''}>1</div>
-            <div className={step >= 2 ? 'active' : ''}>2</div>
-            <div className={step >= 3 ? 'active' : ''}>3</div>
+            {messages.map((msg, idx) => (
+              <div key={idx} className={step >= idx + 1 ? 'active' : ''}>
+                {idx + 1}
+              </div>
+            ))}
           </div>
           <p className="message">
             Step {step}: {messages[step - 1]}
@@ -38,7 +40,11 @@ function App() {
             <button style={{ color: '#fff' }} onClick={handlePrevious} disabled={step === 1}>
               Previous
             </button>
-            <button style={{ color: '#fff' }} onClick={handleNext} disabled={step === 3}>
+            <button
+              style={{ color: '#fff' }}
+              onClick={handleNext}
+              disabled={step === messages.length}
+            >
               Next
             </button>
           </div>
