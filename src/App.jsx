@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 
-const messages = ['Learn React ⚛️', 'Apply for jobs 💼', 'Invest your new income 🤑'];
+const messages = ['Learn React ⚛️', 'Apply for jobs 💼', 'Invest your new income 🤑', 'Blob 🦄'];
 
 function App() {
   const [step, setStep] = useState(1);
@@ -12,11 +12,15 @@ function App() {
   }
 
   function handleNext() {
-    if (step < 3) setStep((s) => s + 1);
+    if (step < messages.length) setStep((s) => s + 1);
   }
 
   function handleClose() {
     setIsOpen(!isOpen);
+  }
+
+  function hendleSteps(clickedStep) {
+    setStep(clickedStep);
   }
 
   return (
@@ -28,7 +32,11 @@ function App() {
         <div className="steps">
           <div className="numbers">
             {messages.map((msg, idx) => (
-              <div key={idx} className={step >= idx + 1 ? 'active' : ''}>
+              <div
+                key={idx}
+                className={step >= idx + 1 ? 'active' : ''}
+                onClick={() => hendleSteps(idx + 1)}
+              >
                 {idx + 1}
               </div>
             ))}
