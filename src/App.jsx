@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import './App.css';
 
-const messages = [
-  'Learn React ⚛️',
-  'Apply for jobs 💼',
-  'Invest your new income 🤑',
-  'Blob 🦄',
-];
+const messages = ['Learn React ⚛️', 'Apply for jobs 💼', 'Invest your new income 🤑', 'Blob 🦄'];
+
+function Button({ textColor, onClick, isDisabled, children }) {
+  return (
+    <button style={{ color: textColor }} onClick={onClick} disabled={isDisabled}>
+      {children}
+    </button>
+  );
+}
 
 function App() {
   const [step, setStep] = useState(1);
@@ -24,7 +27,7 @@ function App() {
     setIsOpen(!isOpen);
   }
 
-  function hendleStepСlick(clickedStep) {
+  function handleStepClick(clickedStep) {
     setStep(clickedStep);
   }
 
@@ -42,7 +45,7 @@ function App() {
                 <div
                   key={idx}
                   className={step >= activeStep ? 'active' : ''}
-                  onClick={() => hendleStepСlick(activeStep)}
+                  onClick={() => handleStepClick(activeStep)}
                 >
                   {activeStep}
                 </div>
@@ -53,16 +56,33 @@ function App() {
             Step {step}: {messages[step - 1]}
           </p>
           <div className="buttons">
-            <button style={{ color: '#fff' }} onClick={handlePrevious} disabled={step === 1}>
+            <Button
+              textColor="#fff"
+              onClick={handlePrevious}
+              // text="Previous"
+              isDisabled={step === 1}
+            >
+              <span>👈</span>Previous
+            </Button>
+            {/* <button style={{ color: '#fff' }} onClick={handlePrevious} disabled={step === 1}>
               Previous
-            </button>
-            <button
+            </button> */}
+
+            <Button
+              textColor="#fff"
+              onClick={handleNext}
+              // text="Next"
+              isDisabled={step === messages.length}
+            >
+              Next<span>👉</span>
+            </Button>
+            {/* <button
               style={{ color: '#fff' }}
               onClick={handleNext}
               disabled={step === messages.length}
             >
               Next
-            </button>
+            </button> */}
           </div>
         </div>
       )}
