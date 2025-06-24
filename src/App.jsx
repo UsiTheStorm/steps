@@ -11,6 +11,10 @@ function Button({ textColor, onClick, isDisabled, children }) {
   );
 }
 
+function StepMessage({ children }) {
+  return <p className="message">{children}</p>;
+}
+
 function App() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
@@ -52,9 +56,12 @@ function App() {
               );
             })}
           </div>
-          <p className="message">
+          <StepMessage>
+            <span>Step {step}:</span> {messages[step - 1]}
+          </StepMessage>
+          {/* <p className="message">
             Step {step}: {messages[step - 1]}
-          </p>
+          </p> */}
           <div className="buttons">
             <Button
               textColor="#fff"
